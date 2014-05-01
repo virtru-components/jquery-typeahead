@@ -1,0 +1,16 @@
+{
+  "name": "jquery-typeahead",
+  "repo": "virtru-components/jquery-typeahead",
+  "description": "An autocomplete library for jquery",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "components/jquery": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
