@@ -1139,6 +1139,13 @@ var jQuery = require('jquery');
                         $input.removeData(typeaheadKey);
                     }
                 }
+            },
+            suggest: function suggest() {
+                //additional function which autocompletes the input field
+                var $input = $(this), typeahead;
+                    if (typeahead = $input.data(typeaheadKey)) {
+                    typeahead._autocomplete(true);
+                }
             }
         };
         $.fn.typeahead = function(method) {
