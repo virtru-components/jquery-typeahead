@@ -679,6 +679,7 @@ var jQuery = require('jquery');
             onSuggestionClick = _.bind(this._onSuggestionClick, this);
             onSuggestionMouseEnter = _.bind(this._onSuggestionMouseEnter, this);
             onSuggestionMouseLeave = _.bind(this._onSuggestionMouseLeave, this);
+            this.showDropDownMenu = o.showDropDownMenu;
             this.$menu = $(o.menu).on("click.tt", ".tt-suggestion", onSuggestionClick).on("mouseenter.tt", ".tt-suggestion", onSuggestionMouseEnter).on("mouseleave.tt", ".tt-suggestion", onSuggestionMouseLeave);
             _.each(this.datasets, function(dataset) {
                 that.$menu.append(dataset.getRoot());
@@ -708,7 +709,7 @@ var jQuery = require('jquery');
                 this.$menu.hide();
             },
             _show: function() {
-                this.$menu.css("display", "none");
+                this.$menu.css("display", this.showDropDownMenu ? "block" : "none");
             },
             _getSuggestions: function getSuggestions() {
                 return this.$menu.find(".tt-suggestion");
@@ -861,6 +862,7 @@ var jQuery = require('jquery');
             });
             this.dropdown = new Dropdown({
                 menu: $menu,
+                showDropDownMenu: o.showDropDownMenu,
                 datasets: o.datasets
             }).onSync("suggestionClicked", this._onSuggestionClicked, this).onSync("cursorMoved", this._onCursorMoved, this).onSync("cursorRemoved", this._onCursorRemoved, this).onSync("opened", this._onOpened, this).onSync("closed", this._onClosed, this).onAsync("datasetRendered", this._onDatasetRendered, this);
             this.input = new Input({
@@ -1091,6 +1093,7 @@ var jQuery = require('jquery');
                         withHint: _.isUndefined(o.hint) ? true : !!o.hint,
                         minLength: o.minLength,
                         autoselect: o.autoselect,
+                        showDropDownMenu: o.showDropDownMenu ? true : false,
                         datasets: datasets
                     });
                     $input.data(typeaheadKey, typeahead);
